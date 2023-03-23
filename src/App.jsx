@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { Form } from './components/Form';
+import { TaskList } from './components/TaskList';
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
   const addTask = (task) => {
-    console.log(task);
+    setTasks((prev) => [...prev, task]);
   };
 
   return (
@@ -11,6 +15,7 @@ function App() {
         <h1>My Task List</h1>
       </header>
       <Form addTask={addTask} />
+      {tasks && <TaskList tasks={tasks} />}
     </div>
   );
 }
