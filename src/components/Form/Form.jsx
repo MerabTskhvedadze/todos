@@ -1,11 +1,16 @@
 import { useState } from 'react';
 import { HiOutlineBookmark } from 'react-icons/hi2';
 
-export const Form = () => {
+export const Form = ({ addTask }) => {
   const [task, setTask] = useState('');
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    addTask({
+      value: task,
+      checked: false,
+      id: Date.now(),
+    });
     setTask('');
   };
 
