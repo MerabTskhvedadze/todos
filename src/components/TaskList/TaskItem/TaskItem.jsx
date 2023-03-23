@@ -8,7 +8,7 @@ import {
 
 import styles from './TaskItem.module.css';
 
-export const TaskItem = ({ task, deleteTask, toggleTask }) => {
+export const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
   const handleCheckboxChange = () => {
     toggleTask(task.id);
   };
@@ -35,7 +35,7 @@ export const TaskItem = ({ task, deleteTask, toggleTask }) => {
         <button
           className='btn'
           aria-label={`Update ${task.name} Task`}
-          // onClick={() => enterEditMode(task)}
+          onClick={() => enterEditMode(task)}
         >
           <PencilSquareIcon width={24} height={24} />
         </button>
