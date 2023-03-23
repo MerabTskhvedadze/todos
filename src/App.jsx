@@ -9,6 +9,14 @@ function App() {
     setTasks((prev) => [...prev, task]);
   };
 
+  const toggleTask = (id) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id ? { ...task, checked: !task.checked } : task
+      )
+    );
+  };
+
   const deleteTask = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
   };
@@ -19,7 +27,13 @@ function App() {
         <h1>My Task List</h1>
       </header>
       <Form addTask={addTask} />
-      {tasks && <TaskList tasks={tasks} deleteTask={deleteTask} />}
+      {tasks && (
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          toggleTask={toggleTask}
+        />
+      )}
     </div>
   );
 }

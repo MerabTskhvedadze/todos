@@ -8,11 +8,9 @@ import {
 
 import styles from './TaskItem.module.css';
 
-export const TaskItem = ({ task, deleteTask }) => {
-  const [isChecked, setIsChecked] = useState(task.checked);
-
+export const TaskItem = ({ task, deleteTask, toggleTask }) => {
   const handleCheckboxChange = () => {
-    setIsChecked((prev) => !prev);
+    toggleTask(task.id);
   };
 
   return (
@@ -21,7 +19,7 @@ export const TaskItem = ({ task, deleteTask }) => {
         <input
           type='checkbox'
           className={styles.checkbox}
-          checked={isChecked}
+          checked={task.checked}
           onChange={handleCheckboxChange}
           name={task.name}
           id={task.id}
