@@ -5,6 +5,7 @@ import { EditForm } from './components/EditForm';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [previousFocusedEl, setPreviousFocusedEl] = useState(null);
   const [editedTask, setEditedTask] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -33,11 +34,13 @@ function App() {
 
   const deleteTask = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
+    previousFocusedEl.focus();
   };
 
   const enterEditMode = (task) => {
     setEditedTask(task);
     setIsEditing(true);
+    setPreviousFocusedEl(document.activeElement);
   };
 
   return (
@@ -46,7 +49,11 @@ function App() {
         <h1>My Task List</h1>
       </header>
       {isEditing && (
-        <EditForm editedTask={editedTask} updateTask={updateTask} />
+        <EditForm
+          editedTask={editedTask}
+          updateTask={updateTask}
+          closeEditingMode={closeEditingMode}
+        />
       )}
       <Form addTask={addTask} />
       {tasks && (
