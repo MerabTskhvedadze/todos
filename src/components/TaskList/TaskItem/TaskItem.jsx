@@ -8,7 +8,7 @@ import {
 
 import styles from './TaskItem.module.css';
 
-export const TaskItem = ({ task }) => {
+export const TaskItem = ({ task, deleteTask }) => {
   const [isChecked, setIsChecked] = useState(task.checked);
 
   const handleCheckboxChange = () => {
@@ -44,7 +44,7 @@ export const TaskItem = ({ task }) => {
         <button
           className={`btn ${styles.delete}`}
           aria-label={`Delete ${task.name} Task`}
-          // onClick={() => deleteTask(task.id)}
+          onClick={() => deleteTask(task.id)}
         >
           <TrashIcon width={24} height={24} />
         </button>

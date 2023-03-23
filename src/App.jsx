@@ -9,13 +9,17 @@ function App() {
     setTasks((prev) => [...prev, task]);
   };
 
+  const deleteTask = (id) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  };
+
   return (
     <div className='container'>
       <header>
         <h1>My Task List</h1>
       </header>
       <Form addTask={addTask} />
-      {tasks && <TaskList tasks={tasks} />}
+      {tasks && <TaskList tasks={tasks} deleteTask={deleteTask} />}
     </div>
   );
 }
