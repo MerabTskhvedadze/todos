@@ -14,20 +14,21 @@ function App() {
 
   const toggleTask = (id) => {
     setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, checked: !task.checked } : task
-      )
+      prev.map((t) => (t.id === id ? { ...t, checked: !t.checked } : t))
     );
   };
 
   const updateTask = (task) => {
     setTasks((prev) =>
-      prev.map((task) =>
-        task.id === task.id ? { ...task, value: task.value } : task
+      prev.map((t) =>
+        t.id === task.id ? { ...task, value: task.value } : task
       )
     );
+    closeEditingMode();
+  };
 
-    //task: close the edit mode
+  const closeEditingMode = () => {
+    setIsEditing(false);
   };
 
   const deleteTask = (id) => {

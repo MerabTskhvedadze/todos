@@ -7,7 +7,7 @@ export const EditForm = ({ editedTask, updateTask }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // updateTask();
+    updateTask({ ...editedTask, value: updatedTask });
   };
 
   return (
