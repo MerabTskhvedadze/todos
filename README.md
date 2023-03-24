@@ -1,2 +1,2 @@
 # todos
-deploy: https://master--incandescent-kelpie-252fea.netlify.app/
+deploy: https://incandescent-kelpie-252fea.netlify.app/
