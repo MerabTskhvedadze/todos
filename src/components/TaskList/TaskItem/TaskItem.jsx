@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { ListContext } from '../../../context/list.context';
 
 import {
   CheckIcon,
@@ -8,7 +10,9 @@ import {
 
 import styles from './TaskItem.module.css';
 
-export const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
+export const TaskItem = ({ task }) => {
+  const { deleteTask, toggleTask, enterEditMode } = useContext(ListContext);
+
   const handleCheckboxChange = () => {
     toggleTask(task.id);
   };

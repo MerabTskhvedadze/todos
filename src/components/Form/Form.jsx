@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+
+import { ListContext } from '../../context/list.context';
+
 import { HiOutlineBookmark } from 'react-icons/hi2';
 
-export const Form = ({ addTask }) => {
+export const Form = () => {
+  const { addTask } = useContext(ListContext);
   const [task, setTask] = useState('');
 
   const handleFormSubmit = (e) => {

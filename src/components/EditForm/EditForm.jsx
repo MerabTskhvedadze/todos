@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ListContext } from '../../context/list.context';
 
 import { CheckIcon } from '@heroicons/react/24/solid';
 
-export const EditForm = ({ editedTask, updateTask, closeEditingMode }) => {
+export const EditForm = () => {
+  const { editedTask, updateTask, closeEditingMode } = useContext(ListContext);
+
   const [updatedTask, setUpdatedTask] = useState(editedTask.value);
 
   useEffect(() => {
     const closeModalOnESC = (e) => e.key === 'Escape' && closeEditingMode();
-
     window.addEventListener('keydown', closeModalOnESC);
-
     return () => window.removeEventListener('keydown', closeModalOnESC);
   }, []);
 
